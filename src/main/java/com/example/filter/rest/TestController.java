@@ -12,10 +12,17 @@ public class TestController {
 	@Autowired
 	DocumentRepo docRepo;
 	
+	@Autowired
+	NonFilterEntityRepo entityRepo;
+	
 	@GetMapping("/test")
 	public String test() {
 		
 		List<Document> list = docRepo.findAll();
-		return "" + list.size();
+		
+		List<NonFilterEntity> list2 = entityRepo.findAll();
+		
+		return "" + ( list.size() + list2.size() );
+		
 	}
 }
